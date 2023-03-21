@@ -5,21 +5,7 @@
 //! documentation to understand what models are available
 //! and the differences between them.
 
-use serde::Deserialize;
-
-#[derive(Debug, Deserialize)]
-pub struct Models {
-    pub data: Vec<ModelEntry>,
-    pub object: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct ModelEntry {
-    pub id: String,
-    pub object: String,
-    pub owned_by: String,
-    pub permission: Vec<String>,
-}
+use crate::structure::models::{ModelEntry, Models};
 
 pub trait ModelFeature {
     type Error: std::error::Error;

@@ -1,8 +1,9 @@
 //! The implementation of [`ModelFeature`].
 
 use crate::{
-    features::models::{ModelEntry, ModelFeature, Models},
+    features::models::ModelFeature,
     openai::{openai_uri, OpenAI},
+    structure::models::{ModelEntry, Models},
 };
 
 impl ModelFeature for OpenAI {
