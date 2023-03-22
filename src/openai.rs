@@ -94,12 +94,12 @@ pub fn openai_uri(version: &str, endpoint: &str) -> Result<Url, url::ParseError>
         assert!(version.starts_with('v'), "version must start with 'v'");
     }
 
-    let mut component = String::with_capacity(version.len() + endpoint.len() + 1);
-    component.push_str(version);
-    component.push('/');
-    component.push_str(endpoint);
+    let mut url = Url::parse("https://api.openai.com/")?;
 
-    let url = Url::parse("https://api.openai.com/")?.join(&component)?;
+    url.path_segments_mut()
+        .expect("not a valid base")
+        .push(version)
+        .push(endpoint);
 
     Ok(url)
 }
