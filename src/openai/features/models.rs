@@ -23,7 +23,7 @@ impl ModelFeature for OpenAI {
 
     async fn model(&self, model_id: &str) -> RespResult<ModelEntry, Self::Error> {
         let url = {
-            let mut u = openai_uri("v1", "model")?;
+            let mut u = openai_uri("v1", "models")?;
 
             u.path_segments_mut()
                 .expect("not a valid base")
