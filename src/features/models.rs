@@ -5,7 +5,10 @@
 //! documentation to understand what models are available
 //! and the differences between them.
 
-use crate::structure::models::{ModelEntry, Models};
+use crate::structure::{
+    models::{ModelEntry, Models},
+    response::RespResult,
+};
 
 pub trait ModelFeature {
     type Error: std::error::Error;
@@ -14,7 +17,7 @@ pub trait ModelFeature {
     ///
     /// Lists the currently available models, and provides basic information
     /// about each one such as the owner and availability.
-    async fn models(&self) -> Result<Models, Self::Error>;
+    async fn models(&self) -> RespResult<Models, Self::Error>;
 
     /// Retrieve model.
     ///
@@ -24,5 +27,5 @@ pub trait ModelFeature {
     /// ## Parameters
     ///
     /// - `model_id`: The ID of the model to use for this request.
-    async fn model(&self, model_id: &str) -> Result<ModelEntry, Self::Error>;
+    async fn model(&self, model_id: &str) -> RespResult<ModelEntry, Self::Error>;
 }
