@@ -7,6 +7,9 @@ use serde_json::Value;
 pub struct Models {
     pub data: Vec<ModelEntry>,
     pub object: String,
+
+    #[serde(flatten)]
+    pub extra: Value,
 }
 
 #[derive(Debug, Deserialize)]
@@ -17,4 +20,7 @@ pub struct ModelEntry {
 
     // fixme
     pub permission: Value,
+
+    #[serde(flatten)]
+    pub extra: Value,
 }
